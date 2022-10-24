@@ -1,5 +1,5 @@
 resource "aws_instance" "blue" {
-  ami                    = data.aws_ami.ubuntu_latest
+  ami                    = data.aws_ami.ubuntu_latest.id
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.bg-subnet-pub-1.id
   vpc_security_group_ids = ["${aws_security_group.ssh-allowed.id}"]
@@ -29,7 +29,7 @@ resource "aws_lb_target_group_attachment" "blue" {
 
 
 resource "aws_instance" "green" {
-  ami                    = data.aws_ami.ubuntu_latest
+  ami                    = data.aws_ami.ubuntu_latest.id
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.bg-subnet-pub-1.id
   vpc_security_group_ids = ["${aws_security_group.ssh-allowed.id}"]
