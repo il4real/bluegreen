@@ -1,13 +1,16 @@
 resource "aws_instance" "blue" {
-  count                  = 2
   ami                    = var.AMI
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.bg-subnet-pub-1.id
   vpc_security_group_ids = ["${aws_security_group.ssh-allowed.id}"]
-  user_data              = file("nginx.sh")
+  user_data              = file("nginxB.sh")
 }
 
-output "security_check" {
-  description = "check_sg"
-  value       = aws_security_group.ssh-allowed.id
+
+resource "aws_instance" "green" {
+  ami                    = var.AMI
+  instance_type          = "t2.micro"
+  subnet_id              = aws_subnet.bg-subnet-pub-1.id
+  vpc_security_group_ids = ["${aws_security_group.ssh-allowed.id}"]
+  user_data              = file("nginxG.sh")
 }

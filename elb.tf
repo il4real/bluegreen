@@ -38,8 +38,10 @@ module "elb_http" {
 
   // ELB attachments
   number_of_instances = 2
-  instances           = [for i in aws_instance.blue: i.id]
-  depends_on          = [aws_instance.blue]
+  instances           = [aws_instance.blue.id, aws_instance.green.id]
+  depends_on          = [aws_instance.blue, aws_instance.green]
+  # instances           = [for i in aws_instance.blue: i.id]
+  # depends_on          = [aws_instance.blue]
 
   tags = {
     Name = "BlueGreen LB"
