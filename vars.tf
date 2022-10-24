@@ -2,10 +2,6 @@ variable "AWS_REGION" {
   default = "eu-central-1"
 }
 
-variable "AMI" {
-  default = "ami-072b7a2ffac6318c1"
-}
-
 variable "rules" {
 
   type = list(object({
