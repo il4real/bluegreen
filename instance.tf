@@ -4,6 +4,7 @@ resource "aws_instance" "blue" {
   subnet_id              = aws_subnet.bg-subnet-pub-1.id
   vpc_security_group_ids = ["${aws_security_group.ssh-allowed.id}"]
   user_data              = file("nginxB.sh")
+  key_name = "bluegreen"
 }
 
 resource "aws_lb_target_group" "blue" {
@@ -34,6 +35,7 @@ resource "aws_instance" "green" {
   subnet_id              = aws_subnet.bg-subnet-pub-1.id
   vpc_security_group_ids = ["${aws_security_group.ssh-allowed.id}"]
   user_data              = file("nginxG.sh")
+  key_name = "bluegreen"
 }
 
 resource "aws_lb_target_group" "green" {
