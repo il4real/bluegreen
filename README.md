@@ -8,7 +8,6 @@ Blue-green deployments and rolling deployments (canary tests) allow you to relea
 
 ## PREREQUISITES
 
-* Linux
 * Terraform 0.14+
 * AWS account
 * Configured AWS CLI
@@ -16,6 +15,8 @@ Blue-green deployments and rolling deployments (canary tests) allow you to relea
 ## HOW TO USE VARIABLES
 
 #### File _vars.tf_ contains variables, used as an option to apply deployment:
+
+_terraform apply -var 'traffic_distribution=split'_
 
 **blue** means that all deployment will be made on blue instance
 
